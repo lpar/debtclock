@@ -1,0 +1,44 @@
+<html>
+  <head>
+  </head>
+  <body>
+
+    <!-- Example of just including everything in the page -->
+
+    <h1>US Debt</h1>
+
+    <p id="debt" style="font-size: xx-large; color: red;"></p>
+
+    <script>
+      var USDebt = function () {
+        var destElem = "debt",
+          baseDebt =  21043317739890.61,
+          baseDebtDate =  new Date(2018,3,23), // months are numbered from 0
+          perSecond = 37589.52331799,
+          updateInterval = 100,
+
+          update = function () {
+            var tdiffsec = (new Date() - baseDebtDate) / 1000,
+              debt = Math.round(baseDebt + tdiffsec * perSecond),
+              nicedebt = "$" + debt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            destElem.innerText = nicedebt;
+            window.setTimeout(update, updateInterval);
+          },
+
+          setup =  function (id, interval, basedebt, basedebtdate, persecond) {
+            destElem = document.getElementById(id);
+            baseDebt = basedebt;
+            baseDebtDate = basedebtdate;
+            perSecond = persecond;
+            updateInterval = interval;
+            window.setTimeout(update,interval);
+          };
+
+        return {"setup": setup};
+
+      }();
+      USDebt.setup("debt", 100, 21043317739890.61, new Date(2018,3,23), 37589.52331799);
+    </script>
+
+  </body>
+</html>
