@@ -1,0 +1,22 @@
+<html>
+  <head>
+  </head>
+  <body>
+
+  <h1>US Debt</h1>
+
+  <p id="debt" style="font-size: xx-large; color: red;"></p>
+
+  <script src="debt.js"></script>
+  <script>
+    // First argument is the ID of the HTML element you want updated
+    // Second argument is the time between updates, in thousandths of a second
+    // Third argument is the base debt in $
+    // Fourth argument is the date on which that was the base debt
+    // (months for Date are numbered 0 = Jan, 1 = Feb etc.)
+    // Fifth argument is the debt increase per second since then
+    USDebt.setup("debt", 100, 21043317739890.61, new Date(2018,3,23), 37589.52331799);
+  </script>
+
+  </body>
+</html>
